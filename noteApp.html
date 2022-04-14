@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+    <title>Note App!</title>
+  </head>
+  <body class="bg-info">
+  <div class="container ">
+      <button class="btn btn-success btn-lg position-relative "id="notes"><i class="fas fa-plus"></i> Add Note</button>
+
+
+
+
+
+
+
+
+
+<style>
+    *{box-sizing: border-box}
+    textarea{width: 100%;height: 100%;border: none;font-style: inherit;outline: none;font-size: 1,5rem;}
+    body{display: flex;
+    flex-wrap: wrap;
+    font-family: "Poppins",sans-serif ;
+    margin: 0;}
+    .note{background-color: white;
+    width: 400px;
+    height: 400px;
+    margin: 4px;}
+    .tolle_note{background-color: rgb(47, 255, 47);display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;}
+    .tolle_note >button{border: none;
+    background-color: transparent;font-size: 1rem;
+    margin-left: 0.5rem;
+    color: white;}
+    .note .main{height: 100%;width: 100%; margin: 4px;}
+    .hidden{display: none;margin: 4px;}
+
+</style>
+<script>
+  const notest=document.getElementById(notes)
+ 
+  function getNewNotes(){const note=document.createElement("div")
+note .classList.add("note")
+note.innerHTML=`<div class="note mt-3">
+      <div class="tolle_note">
+<button id="save"><i class="fas fa-edit"></i></button>
+<button id="delite"><i class="fas fa-trash-alt"></i></button>
+         </div>
+        <div class="main hidden"></div>
+              <textarea></textarea>
+          
+      </div>`;
+      const save =note.querySelector("#save");
+const delite=note.querySelector("#delite");
+const main=note.querySelector(".main");
+    const textArea=note.querySelector("textarea");
+save.addEventListener("click", () => {
+        main.classList.toggle("hidden");
+        textArea.classList.toggle("hidden");
+    });
+    textArea.addEventListener("input",function(evt){const {value}=evt.target
+    main.innerHTML=marked(value);})
+    delite.addEventListener("click",function(){note.remove();})
+    //<div class="note mt-3">
+      //<div class="tolle_note">
+//<button id="save"><i class="fas fa-edit"></i></button>
+//<button id="delite"><i class="fas fa-trash-alt"></i></button>
+  //        </div>
+    //      <div class="main hidden"></div>
+      //        <textarea></textarea>
+          
+      //</div>
+  //</div>
+ 
+      
+
+document.body.appendChild(note)}
+notes.addEventListener("click",function() {getNewNotes();});
+
+    
+
+ 
+</script>
